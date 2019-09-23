@@ -1,0 +1,34 @@
+{% extends 'index.html'%}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-3">
+
+      </div>
+       <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+           <h3>Package Discription  Form</h3>
+          </div>
+          <div class="card-body">
+          <form class="" action="{% url 'package' %}" method="post">
+          {% csrf_token %}
+      <input type="text" name="name" class="form-control" placeholder="Package Name"  required> <br>
+      <input type="number" name="price" class="form-control" placeholder="Package price" required> <br>
+      <input type="text" name="disc" class="form-control" placeholder="Package dicription" required> <br>
+      <button class="btn btn-primary" type="submit">Submit</button>
+
+      <br>
+    </form>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-3">
+
+     </div>
+    </div>
+   </div>
+
+{% endblock %}

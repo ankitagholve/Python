@@ -1,0 +1,36 @@
+{% extends 'index.html'%}
+
+{% block content%}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        {% if error %}
+          {{error}}
+        {% endif %}
+
+        {% if menulist %}
+          <table class="table table-bordered table-stripped">
+            <thead>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Budget</th>
+              <th>Menu</th>
+            </thead>
+            <tbody>
+              {% for i in menulist %}
+              <tr>
+                <td>{{i.user_name}}</td>
+                <td>{{i.user_email}}</td>
+                <td>{{i.price}}</td>
+                <td>{{i.menu}}</td>
+                <td><a href="{% url 'book_event' %}">Book Event</a></td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+<!--i.user_name-->

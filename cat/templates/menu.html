@@ -1,0 +1,36 @@
+{% extends 'index.html'%}
+
+{% block content %}
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-3">
+
+      </div>
+       <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+           <h3>Menu Form</h3>
+          </div>
+          <div class="card-body">
+          <form class="" action="{% url 'menulist' %}" method="post">
+          {% csrf_token %}
+      <input type="text" name="name" class="form-control" placeholder="Enter your full name"  required> <br>
+      <input type="text" name="email" class="form-control" placeholder="Enter your email" required> <br>
+      <input type="number" name="price" class="form-control" placeholder="Enter your budget amount" required> <br>
+      <input type="text" name="menu" class="form-control"  placeholder="Enter your menu discription" required> <br>
+
+      <button class="btn btn-primary" type="submit">Submit</button>
+
+      <br>
+    </form>
+    </div>
+    </div>
+    </div>
+    <div class="col-md-3">
+
+     </div>
+    </div>
+   </div>
+
+{% endblock %}

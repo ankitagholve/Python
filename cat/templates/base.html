@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+  </head>
+  <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+  <a class="navbar-brand" href="#">Tejas Caterers</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'index'%}">Home <span class="sr-only">(current)</span></a>
+      </li>
+      {% if not user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'user_login' %}">Login</a>
+          </li>
+          <li>
+            <a class="nav-link" href="{% url 'signup' %}">Signup</a>
+          </li>
+          {%else%}
+            <li>
+              <a class="nav-link" href="{% url 'menu' %}">Menu</a>
+            </li>
+
+            <li>
+              <a class="nav-link" href="{% url 'vendor_login' %}">Vendor</a>
+            </li>
+<!--
+            <li>
+              <a class="nav-link" href="{% url 'package' %}">Package</a>
+            </li> -->
+
+            <li>
+              <a class="nav-link" href="{% url 'customer' %}">CustomerSuggesstion</a>
+            </li>
+
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'menulist' %}">Menulist</a>
+          </li>
+          {% if user.is_authenticated %}
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+              <li class="nav-item dropdown pull-right">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{user}}
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="{% url 'profile'%}">Profile</a>
+                  <a class="dropdown-item" href="{% url 'settings'%}">Settings</a>
+                  <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'logout'%}">Logout</a>
+                </div>
+              </li>
+            </ul>
+            {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="jumbotron">
+    <div class="container">
+      <h1 class="display-4">Catering Management System</h1>
+    </div>
+  </div>
+  {% block content %}
+
+  {% endblock%}
+
+  <script type="text/javascript" src="{% static 'js/jquery-3.4.1.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+</body>
+</html>
